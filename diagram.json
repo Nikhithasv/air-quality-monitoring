@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 64.2, "left": -26, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 62.3, "left": 340.6, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -66.9, "left": 369, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd2",
+      "top": -99.2,
+      "left": -13.6,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 221.56, "left": -86.4, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 268.8, "left": -87, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:D2", "dht1:SDA", "green", [ "h38.1", "v-135.1", "h0", "v0", "h0", "v9.6" ] ],
+    [ "esp:GND.1", "bb1:bn.25", "black", [ "h47.7", "v57.5", "h0" ] ],
+    [ "dht1:VCC", "bb1:bn.23", "red", [ "v0", "h-48", "v0", "h0", "v0", "h0", "v192", "h-28.8" ] ],
+    [ "esp:VIN", "bb1:bn.21", "red", [ "h0" ] ],
+    [ "dht1:GND", "bb1:bp.22", "black", [ "v0", "h-96", "v182.4", "h-67.2", "v19.2" ] ],
+    [ "vcc1:VCC", "bb1:bp.6", "green", [ "v0", "h144" ] ],
+    [
+      "lcd2:VCC",
+      "bb1:bp.6",
+      "red",
+      [ "h-28.8", "v307.3", "h0", "v-9.6", "h0", "v0", "h0", "v0", "h0", "v9.6" ]
+    ],
+    [ "gnd1:GND", "bb1:bn.7", "green", [ "v0" ] ],
+    [ "lcd2:GND", "bb1:bn.7", "black", [ "h-38.4", "v326.4" ] ]
+  ],
+  "dependencies": {}
+}
